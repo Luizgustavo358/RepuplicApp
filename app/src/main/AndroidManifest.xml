@@ -15,7 +15,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <service android:name=".GeofenceTransitionsIntentService"/>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -41,7 +40,8 @@
         <activity
             android:name=".RepublicaActivity"
             android:label="@string/title_activity_republica"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>
