@@ -76,8 +76,22 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        // TODO: Implement your own authentication logic here.
-
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            // Usuário já está logado
+        } else {
+            auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Login feito com sucesso
+                            } else {
+                                onLoginFailed();
+                            }
+                        }
+                    });
+        }
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
