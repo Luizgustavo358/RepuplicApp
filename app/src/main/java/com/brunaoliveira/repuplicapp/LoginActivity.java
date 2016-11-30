@@ -52,7 +52,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Chama a activity de registro de conta
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
+                startActivity(intent);
+                finish();
             }
         });
     }

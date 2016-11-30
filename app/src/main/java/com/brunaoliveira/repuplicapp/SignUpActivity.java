@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
                 // Cria a conta e volta ao login activity
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(intent);
-                //finish();
+                finish();
             }
         });
     }
@@ -76,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder().setDisplayName(name).build();
-        user.updateProfile(profileUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
+        user.updateProfile(profileUpdate).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
